@@ -7,14 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CompanyUtilTest {
 
-    private CompanyUtil companyUtil;
-    private Company testCompany;
-
-    @BeforeEach
-    public void setup() {
-        companyUtil = new CompanyUtil();
-        testCompany = new Company("Test Company", "123 Test St", "Test Country", "Test City");
-    }
+    private CompanyUtil companyUtil = new CompanyUtil();
+    private Company testCompany= new Company("Test Company", "123 Test St", "Test Country", "Test City");
 
     @Test
     public void testGetCompanyLocation() {
