@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>project_ready</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -21,16 +21,12 @@
             <version>1.18.32</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.32</version>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>RELEASE</version>
+            <version>5.10.2
+            </version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -38,9 +34,34 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/sachin-smartbear/repos/ready</url>
+            <url>https://maven.pkg.github.com/sachin-smartbear/project_ready</url>
         </repository>
     </distributionManagement>
-
-
+<build>
+    <plugins>
+        <plugin>
+            <groupId>io.github.git-commit-id</groupId>
+            <artifactId>git-commit-id-maven-plugin</artifactId>
+            <version>5.0.0</version>
+            <executions>
+                <execution>
+                    <id>get-the-git-infos</id>
+                    <goals>
+                        <goal>revision</goal>
+                    </goals>
+                    <phase>initialize</phase>
+                </execution>
+            </executions>
+            <configuration>
+                <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                <includeOnlyProperties>
+                    <includeOnlyProperty>^git.build.(time|version)$</includeOnlyProperty>
+                    <includeOnlyProperty>^git.commit.id.(abbrev|full)$</includeOnlyProperty>
+                </includeOnlyProperties>
+                <commitIdGenerationMode>full</commitIdGenerationMode>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>
