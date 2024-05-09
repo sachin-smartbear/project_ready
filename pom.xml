@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>project_ready</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -32,7 +32,7 @@
     </dependencies>
     <distributionManagement>
         <repository>
-            <id>github</id>
+            <id>github-ready</id>
             <name>GitHub Packages</name>
             <url>https://maven.pkg.github.com/sachin-smartbear/project_ready</url>
         </repository>
