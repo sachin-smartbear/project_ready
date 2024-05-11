@@ -62,6 +62,55 @@
                 <commitIdGenerationMode>full</commitIdGenerationMode>
             </configuration>
         </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>3.2.0</version>
+            <executions>
+                <execution>
+                    <id>copy-resources</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${project.basedir}</outputDirectory>
+                        <resources>
+                            <resource>
+                                <directory>${project.build.outputDirectory}</directory>
+                                <includes>
+                                    <include>git.properties</include>
+                                </includes>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+                <execution>
+                    <id>deploy-file</id>
+                    <phase>deploy</phase>
+                    <goals>
+                        <goal>deploy-file</goal>
+                    </goals>
+                    <configuration>
+                        <file>${project.basedir}/git.properties</file>
+                        <repositoryId>github-ready</repositoryId>
+                        <url>https://maven.pkg.github.com/sachin-smartbear/project_ready</url>
+                        <groupId>${project.groupId}</groupId>
+                        <artifactId>${project.artifactId}</artifactId>
+                        <version>${project.version}</version>
+                        <packaging>txt</packaging>
+                        <generatePom>false</generatePom>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
     </plugins>
 </build>
 </project>
