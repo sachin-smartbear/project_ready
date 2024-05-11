@@ -1,0 +1,20 @@
+name: Get Last Commit ID
+
+on:
+  push:
+    branches:
+      - master  # Adjust branch name as needed
+
+jobs:
+  get_last_commit_id:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Get last commit ID
+        id: last_commit
+        run: echo "::set-output name=commit_id::$(git log -1 --pretty=format:%H)"
+      
+      - name: Print last commit ID
+        run: echo "Last commit ID: ${{ steps.last_commit.outputs.commit_id }}"
