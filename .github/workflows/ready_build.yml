@@ -17,4 +17,5 @@ jobs:
         run: echo "::set-output name=commit_id::$(git log -1 --pretty=format:%H)"
       
       - name: Print last commit ID
-        run: echo "Last commit ID: ${{ steps.last_commit.outputs.commit_id }}"
+        run: |
+          echo "Last commit ID: ${{ steps.last_commit.outputs.commit_id }}"
