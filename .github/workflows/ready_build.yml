@@ -1,4 +1,4 @@
-name: Get Last Commit ID
+name: build ready
 
 on:
   push:
@@ -20,30 +20,3 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
-        env:
-          GITHUB_USERNAME: ${{ secrets.USERNAME }}
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-
-      - name: Get last commit ID
-        id: last_commit
-        run: echo "::set-output name=commit_id::$(git log -1 --pretty=format:%H)"
-      
-      - name: Print last commit ID
-        run: |
-          echo "Last commit ID: ${{ steps.last_commit.outputs.commit_id }}"
-
-      - name: Download properties file from GitHub Packages
-        run: |
-            mkdir -p $HOME/.m2
-            echo "//npm.pkg.github.com/:_authToken=${{secrets.TOKEN}}" > $HOME/.m2/settings.xml
-            mvn org.apache.maven.plugins:maven-dependency-plugin:3.1.2:get -DremoteRepositories=https://maven.pkg.github.com/sachin-smartbear/project_ready -Dartifact=org.example:project_ready:1.1
-
-      - name: Extract commit ID from properties file
-        id: extract_commit_id
-        run: |
-          COMMIT_ID=$(grep 'git.commit.id.full' some.properties | cut -d'=' -f2)
-          echo "::set-output name=commit_id::$COMMIT_ID"
-
-      - name: Use the extracted commit ID
-        run: |
-          echo "Commit ID is ${{ steps.extract_commit_id.outputs.commit_id }}"
