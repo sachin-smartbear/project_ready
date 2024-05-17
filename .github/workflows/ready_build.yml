@@ -2,9 +2,10 @@ name: build ready
 
 on:
   repository_dispatch:
+    types: [start-ready_build]
 
 jobs:
-  get_last_commit_id:
+  ready_build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
