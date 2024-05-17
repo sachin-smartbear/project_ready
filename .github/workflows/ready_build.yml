@@ -1,6 +1,7 @@
 name: build ready
 
-on: [repository_dispatch]
+on:
+  repository_dispatch:
 
 jobs:
   get_last_commit_id:
