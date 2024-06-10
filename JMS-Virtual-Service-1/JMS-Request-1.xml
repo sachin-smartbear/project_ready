@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:customOperation xmlns:con="http://eviware.com/soapui/config" id="45963bb6-7ec8-43d4-b657-19cc6becb17a" name="JMS Request 1">
+  <con:settings id="312842f3-fbb9-4e3b-b698-4b65799d3d3e">
+    <con:setting id="45963bb6-7ec8-43d4-b657-19cc6becb17afileName">JMS-Request-1</con:setting>
+  </con:settings>
+  <con:defaultResponse>Response 1</con:defaultResponse>
+  <con:dispatchStyle>SEQUENCE</con:dispatchStyle>
+  <con:dispatchConfig/>
+  <con:operationProperties>
+    <con:property>
+      <con:name>JmsServer</con:name>
+      <con:value>JMS2</con:value>
+    </con:property>
+    <con:property>
+      <con:name>ConnectorLabel</con:name>
+      <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+    </con:property>
+    <con:property>
+      <con:name>InitialContextFactory</con:name>
+      <con:value>contextClassTwo</con:value>
+    </con:property>
+    <con:property>
+      <con:name>ProviderUrl</con:name>
+      <con:value>file:/two</con:value>
+    </con:property>
+    <con:property>
+      <con:name>ConnectionFactory</con:name>
+      <con:value>FactoryTwo</con:value>
+    </con:property>
+    <con:property>
+      <con:name>ReceiveDestinationJndiName</con:name>
+      <con:value>Reciever</con:value>
+    </con:property>
+    <con:property>
+      <con:name>SendDestinationJndiName</con:name>
+      <con:value>Sender</con:value>
+    </con:property>
+    <con:property>
+      <con:name>UserName</con:name>
+      <con:value/>
+    </con:property>
+    <con:property>
+      <con:name>Password</con:name>
+      <con:value/>
+    </con:property>
+  </con:operationProperties>
+  <con:customResponse name="Response 1" id="46e10bfe-b547-47ad-8ac2-9ebecd3d0f23">
+    <con:settings/>
+    <con:script/>
+    <con:responseProperties>
+      <con:property>
+        <con:name>BindableJmsMockResponse.useIncomingReplyTo</con:name>
+        <con:value>false</con:value>
+      </con:property>
+      <con:property>
+        <con:name>JmsServer</con:name>
+        <con:value>JMS2</con:value>
+      </con:property>
+      <con:property>
+        <con:name>ExtraJndiProperties</con:name>
+        <con:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      </con:property>
+      <con:property>
+        <con:name>BindableJmsMockResponse.manualDestination</con:name>
+        <con:value>#ManualJmsConfiguration properties
+
+receiveDestinationJndiName=Reciever
+password=
+initialContextFactoryClass=contextClassTwo
+userName=
+connectionFactoryJndiName=FactoryTwo
+providerUrl=file\:/two
+sendDestinationJndiName=Sender</con:value>
+      </con:property>
+    </con:responseProperties>
+  </con:customResponse>
+</con:customOperation>
